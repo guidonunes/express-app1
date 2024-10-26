@@ -27,6 +27,14 @@ app.get('/five', function(req, res) {
   res.download(201);
 })
 
+app.get('/usa', function(req, res) {
+  res.redirect('https://localhost:8000/india');
+})
+
+app.get('/india', function(req, res) {
+  res.send('This is India');
+})
+
 app.post('/two', function(req, res) {
   res.send('About Page');
 })
