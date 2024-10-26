@@ -23,6 +23,10 @@ app.get('/four', function(req, res) {
   res.json(MyJSONArray);
 })
 
+app.get('/five', function(req, res) {
+  res.download(201);
+})
+
 app.post('/two', function(req, res) {
   res.send('About Page');
 })
