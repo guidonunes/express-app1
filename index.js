@@ -2,11 +2,11 @@ var express = require('express');
 
 app = express();
 
-app.get('/', function(req, res) {
-  res.send('Home Page');
+app.get('/three', function(req, res) {
+  res.status(201).end();
 })
 
-app.post('/about', function(req, res) {
+app.post('/two', function(req, res) {
   res.send('About Page');
 })
 
