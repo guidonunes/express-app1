@@ -20,20 +20,27 @@ app.delete('/contact', function(req, res) {
   res.send('Contact Page');
 })
 
-
+// Set Status Code
 app.get('/six', function(req, res) {
   res.append('name', 'Gui N');
   res.append('city', 'Rio');
 
   res.status(201).end("Response Header Ended");
 })
-
+// Set Cookies
 app.get('/seven', function(req, res) {
   res.cookie('name', 'Gui N');
   res.cookie('city', 'Rio');
   res.cookie('age', '33');
 
   res.end("Cookies Set");
+})
+
+app.get('/eight', function(req, res) {
+  res.clearCookie('name');
+  res.clearCookie('city');
+
+  res.end("Cookies Cleared");
 })
 
 app.listen(8000, function() {
