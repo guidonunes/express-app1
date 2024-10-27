@@ -28,6 +28,14 @@ app.get('/six', function(req, res) {
   res.status(201).end("Response Header Ended");
 })
 
+app.get('/seven', function(req, res) {
+  res.cookie('name', 'Gui N');
+  res.cookie('city', 'Rio');
+  res.cookie('age', '33');
+
+  res.end("Cookies Set");
+})
+
 app.listen(8000, function() {
   console.log('Listening on port 8000');
 });
