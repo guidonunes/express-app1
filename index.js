@@ -20,6 +20,14 @@ app.delete('/contact', function(req, res) {
   res.send('Contact Page');
 })
 
+
+app.get('/six', function(req, res) {
+  res.append('name', 'Gui N');
+  res.append('city', 'Rio');
+
+  res.status(201).end("Response Header Ended");
+})
+
 app.listen(8000, function() {
   console.log('Listening on port 8000');
 });
