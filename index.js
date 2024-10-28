@@ -1,15 +1,29 @@
 var express = require('express');
 var multer  = require('multer');
-var multer = multer();
+
 
 
 var app = express();
-app.use(multer.array());
-app.use(express.static('public'));
+
+var storage = multer.diskStorage({
+  destination: function(req, file, cb) {
+    cb(null, './uploads');
+  },
+  filename: function(req, file, cb) {
+    cb(null, file.originalname);
+  }
+})
+
+var upload = multer({ storage: storage }).single('file');
 
 app.post('/', function(req, res) {
-  let JSONData = req.body;
-  res.send(JSON.stringify(JSONData));
+
+  upload(req, res, function(err) {
+    if(err) {
+      return res.send('Error uploading file.');
+    }
+    res.send('File is uploaded');
+  });
 })
 
 
