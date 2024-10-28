@@ -1,32 +1,25 @@
 var express = require('express');
-var multer  = require('multer');
-
-
 
 var app = express();
 
-var storage = multer.diskStorage({
-  destination: function(req, file, cb) {
-    cb(null, './uploads');
-  },
-  filename: function(req, file, cb) {
-    cb(null, file.originalname);
-  }
-})
+app.use(function(req, res, next) {
+  console.log('I am a middleware');
+  next();
+});
 
-var upload = multer({ storage: storage }).single('file');
-
-app.post('/', function(req, res) {
-
-  upload(req, res, function(err) {
-    if(err) {
-      return res.send('Error uploading file.');
-    }
-    res.send('File is uploaded');
-  });
-})
+app.get('/', function(req, res) {
+  res.send('Hello from Express');
+});
 
 
+app.get('/about', function(req, res) {
+  res.send('Hello from About');
+});
+
+
+app.get('/contact', function(req, res) {
+  res.send('Hello from Contact');
+});
 
 app.listen(8000, function() {
   console.log('Listening on port 8000');
