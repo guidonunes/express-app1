@@ -1,14 +1,13 @@
 var express = require('express');
+var bodyParser = require('body-parser');
 
 var app = express();
-
+app.use(bodyParser.json());
 
 app.post('/', function(req, res) {
-
-  let userName = req.header('userName');
-  let password = req.header('password');
-
-  res.send('User Name:' + userName + ' Password:' + password);
+  let data = req.body;
+  let JSONString = JSON.stringify(data);
+  res.send(JSONString);
 })
 
 
